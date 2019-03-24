@@ -2,6 +2,10 @@
 
 [SQLite](https://sqlite.org/) bindings for [Pony](https://www.ponylang.io/).
 
+# API documentation
+
+API documentation can be found [here](https://joncfoo.github.io/pony-sqlite/docs/sqlite--index/)
+
 # developing
 
 This project uses the Pony docker image for building and testing.
