@@ -20,6 +20,7 @@ example:
 
 docs:
 	$(RUNNER) ponyc --pic -o ./bin --docs-public -d -p sqlite ./sqlite
+	cp -rf bin/sqlite-docs/* docs
 
 watch:
 	@./scripts/watch.sh
