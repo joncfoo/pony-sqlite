@@ -10,7 +10,7 @@ test: build
 	@./bin/sqlite --noprog
 
 build:
-	$(RUNNER) ponyc --pic -o ./bin -d -p sqlite ./sqlite
+	$(RUNNER) ponyc --pic -o ./bin -d $(DOC_ARGS) -p sqlite ./sqlite
 
 sqlite:
 	$(RUNNER) ./scripts/compile-sqlite.sh
@@ -18,9 +18,11 @@ sqlite:
 example:
 	$(RUNNER) ponyc --pic -o ./bin -d -p sqlite ./example
 
-docs:
-	$(RUNNER) ponyc --pic -o ./bin --docs-public -d -p sqlite ./sqlite
-	cp -rf bin/sqlite-docs/* docs
+docs: DOC_ARGS=--docs-public
+docs: build
+	$(shell cd bin/sqlite-docs; mkdocs build)
+	rm -rf docs
+	mv bin/sqlite-docs/site docs
 
 watch:
 	@./scripts/watch.sh
