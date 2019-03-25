@@ -4,7 +4,7 @@
 
 # API documentation
 
-API documentation can be found [here](https://joncfoo.github.io/pony-sqlite/docs/sqlite--index/)
+API documentation can be found [here](https://joncfoo.github.io/pony-sqlite/sqlite--index/)
 
 # developing
 
