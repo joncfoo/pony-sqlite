@@ -59,34 +59,34 @@ class _TestStatement is UnitTest
         h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_row(), "expected row to exist")
 
         h.assert_eq[SqliteDataType](stmt.data_type(0), Sqlite.data_text(), "expected text")
-        h.assert_eq[String](stmt.text(0), "hi there", "expected 'hi there'")
+        h.assert_eq[String](stmt.string(0), "hi there", "expected 'hi there'")
 
         h.assert_eq[SqliteDataType](stmt.data_type(1), Sqlite.data_integer(), "expected integer")
         h.assert_eq[SqliteDataType](stmt.data_type(2), Sqlite.data_integer(), "expected integer")
-        h.assert_eq[I32](stmt.int(1), I32.min_value(), "expected min I32")
-        h.assert_eq[I32](stmt.int(2), I32.max_value(), "expected max I32")
+        h.assert_eq[I32](stmt.i32(1), I32.min_value(), "expected min I32")
+        h.assert_eq[I32](stmt.i32(2), I32.max_value(), "expected max I32")
 
         h.assert_eq[SqliteDataType](stmt.data_type(3), Sqlite.data_integer(), "expected integer")
         h.assert_eq[SqliteDataType](stmt.data_type(4), Sqlite.data_integer(), "expected integer")
-        h.assert_eq[I64](stmt.int64(3), I64.min_value(), "expected min I64")
-        h.assert_eq[I64](stmt.int64(4), I64.max_value(), "expected max I64")
+        h.assert_eq[I64](stmt.i64(3), I64.min_value(), "expected min I64")
+        h.assert_eq[I64](stmt.i64(4), I64.max_value(), "expected max I64")
 
         h.assert_eq[SqliteDataType](stmt.data_type(5), Sqlite.data_float(), "expected float")
         h.assert_eq[SqliteDataType](stmt.data_type(6), Sqlite.data_float(), "expected float")
-        h.assert_eq[F64](stmt.double(5), F64.min_value(), "expected min F64")
-        h.assert_eq[F64](stmt.double(6), F64.max_value(), "expected max F64")
+        h.assert_eq[F64](stmt.f64(5), F64.min_value(), "expected min F64")
+        h.assert_eq[F64](stmt.f64(6), F64.max_value(), "expected max F64")
 
         h.assert_eq[SqliteDataType](stmt.data_type(7), Sqlite.data_blob(), "expected blob")
-        let blob_recv = stmt.blob(7)
+        let blob_recv = stmt.array(7)
         let blob_expect: Array[U8] = [0xde; 0xad; 0xbe; 0xef]
         h.assert_array_eq[U8](blob_recv, blob_expect, "expected same blob")
 
         h.assert_eq[SqliteDataType](stmt.data_type(8), Sqlite.data_null(), "expected null")
-        h.assert_eq[I32](stmt.int(8), 0, "null coercion to I32")
-        h.assert_eq[I64](stmt.int64(8), 0, "null coercion to I64")
-        h.assert_eq[F64](stmt.double(8), 0, "null coercion to F64")
-        h.assert_eq[String](stmt.text(8), "", "null coercion to text")
-        h.assert_array_eq[U8](stmt.blob(8), Array[U8], "null coercion to blob")
+        h.assert_eq[I32](stmt.i32(8), 0, "null coercion to I32")
+        h.assert_eq[I64](stmt.i64(8), 0, "null coercion to I64")
+        h.assert_eq[F64](stmt.f64(8), 0, "null coercion to F64")
+        h.assert_eq[String](stmt.string(8), "", "null coercion to text")
+        h.assert_array_eq[U8](stmt.array(8), Array[U8], "null coercion to blob")
 
         h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_done(), "expected no more rows")
 

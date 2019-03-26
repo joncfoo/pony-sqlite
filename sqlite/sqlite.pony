@@ -28,13 +28,13 @@ use @sqlite3_reset[SqliteResultCode](statement: Pointer[_Statement] tag)
 use @sqlite3_finalize[SqliteResultCode](statement: Pointer[_Statement] tag)
 
 use @sqlite3_column_count[I32](statement: Pointer[_Statement] tag)
+use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_blob[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_double[F64](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_int[I32](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_int64[I64](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_text[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_bytes[I32](statement: Pointer[_Statement] tag, column: I32)
-use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
 
 
 primitive Sqlite
@@ -608,7 +608,7 @@ class SqliteConnection
     var sql_tail_unused: Pointer[U8] = sql_tail_unused.create()
     let rc = @sqlite3_prepare_v3(
       _conn,
-      sql'.cstring(),
+      sql'.cpointer(),
       sql'.size().i32()+1, // include terminating null character
       prepare_flags,
       addressof stmt,
@@ -633,7 +633,7 @@ class SqliteStatement
   statement when you have finished working with it.  Using the statement
   after it has been closed results in undefined behaviour.
 
-  Note: The `double`, `int`, `int64`, `text`, and `blob` functions potentially
+  Note: The `f64`, `i32`, `i64`, `string`, and `array` functions potentially
   coerce data to fit the type retrieved. This is a facet of SQLite.
   See https://www.sqlite.org/datatype3.html for more details.
   """
@@ -711,25 +711,25 @@ class SqliteStatement
     """
     @sqlite3_column_type(_stmt, column)
 
-  fun double(column: I32): F64 =>
+  fun f64(column: I32): F64 =>
     """
     Retrieve the column as a `F64` value.
     """
     @sqlite3_column_double(_stmt, column)
 
-  fun int(column: I32): I32 =>
+  fun i32(column: I32): I32 =>
     """
     Retrieve the column as an `I32` value.
     """
     @sqlite3_column_int(_stmt, column)
 
-  fun int64(column: I32): I64 =>
+  fun i64(column: I32): I64 =>
     """
     Retrieve the column as an `I64` value.
     """
     @sqlite3_column_int64(_stmt, column)
 
-  fun text(column: I32): String iso^ =>
+  fun string(column: I32): String iso^ =>
     """
     Retrieve the column as an `String` value.
     """
@@ -737,7 +737,7 @@ class SqliteStatement
     let length = @sqlite3_column_bytes(_stmt, column).usize()
     String.copy_cpointer(str, length).clone()
 
-  fun blob(column: I32): Array[U8] ref^ =>
+  fun array(column: I32): Array[U8] ref^ =>
     """
     Retrieve the column as a BLOB (`Array[U8]`).
     """
