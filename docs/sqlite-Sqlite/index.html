@@ -1502,6 +1502,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../sqlite-SqliteZeroBlob/" title="class SqliteZeroBlob" class="md-nav__link">
+      class SqliteZeroBlob
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../sqlite-SqliteOpenFlag/" title="type SqliteOpenFlag" class="md-nav__link">
       type SqliteOpenFlag
     </a>
@@ -5126,14 +5138,14 @@
                 
                 
                 <h1 id="sqlite">Sqlite<a class="headerlink" href="#sqlite" title="Permanent link">&para;</a></h1>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L40">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L54">[Source]</a></span></p>
 <p>This primitive contains supporting functions for SQLite.</p>
 <pre><code class="pony">primitive val Sqlite
 </code></pre>
 
 <h2 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permanent link">&para;</a></h2>
 <h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L40">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L54">[Source]</a></span></p>
 <pre><code class="pony">new val create()
 : Sqlite val^
 </code></pre>
@@ -5145,7 +5157,7 @@
 <hr />
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L45">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L59">[Source]</a></span></p>
 <p>Opens a connection to a SQLite database. Returns <code>SqliteConnection</code> if the
 database could be successfully opened or <code>SqliteError</code> if it could not.</p>
 <p><code>file_name</code> can be empty, <code>":memory:"</code>, path to a file, or a URI.</p>
@@ -5173,7 +5185,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L80">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L94">[Source]</a></span></p>
 <p>The SQLite version.</p>
 <pre><code class="pony">fun box version()
 : String iso^
@@ -5185,7 +5197,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="result_description">result_description<a class="headerlink" href="#result_description" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L88">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L102">[Source]</a></span></p>
 <p>Description of a <code>ResultCode</code>.</p>
 <pre><code class="pony">fun box result_description(
   rc: I32 val)
@@ -5202,7 +5214,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_readonly">open_readonly<a class="headerlink" href="#open_readonly" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L97">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L111">[Source]</a></span></p>
 <pre><code class="pony">fun box open_readonly()
 : I32 val
 </code></pre>
@@ -5213,7 +5225,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_readwrite">open_readwrite<a class="headerlink" href="#open_readwrite" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L98">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L112">[Source]</a></span></p>
 <pre><code class="pony">fun box open_readwrite()
 : I32 val
 </code></pre>
@@ -5224,7 +5236,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_create">open_create<a class="headerlink" href="#open_create" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L99">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L113">[Source]</a></span></p>
 <pre><code class="pony">fun box open_create()
 : I32 val
 </code></pre>
@@ -5235,7 +5247,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_deleteonclose">open_deleteonclose<a class="headerlink" href="#open_deleteonclose" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L100">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L114">[Source]</a></span></p>
 <pre><code class="pony">fun box open_deleteonclose()
 : I32 val
 </code></pre>
@@ -5246,7 +5258,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_exclusive">open_exclusive<a class="headerlink" href="#open_exclusive" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L101">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L115">[Source]</a></span></p>
 <pre><code class="pony">fun box open_exclusive()
 : I32 val
 </code></pre>
@@ -5257,7 +5269,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_autoproxy">open_autoproxy<a class="headerlink" href="#open_autoproxy" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L102">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L116">[Source]</a></span></p>
 <pre><code class="pony">fun box open_autoproxy()
 : I32 val
 </code></pre>
@@ -5268,7 +5280,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_uri">open_uri<a class="headerlink" href="#open_uri" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L103">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L117">[Source]</a></span></p>
 <pre><code class="pony">fun box open_uri()
 : I32 val
 </code></pre>
@@ -5279,7 +5291,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_memory">open_memory<a class="headerlink" href="#open_memory" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L104">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L118">[Source]</a></span></p>
 <pre><code class="pony">fun box open_memory()
 : I32 val
 </code></pre>
@@ -5290,7 +5302,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_main_db">open_main_db<a class="headerlink" href="#open_main_db" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L105">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L119">[Source]</a></span></p>
 <pre><code class="pony">fun box open_main_db()
 : I32 val
 </code></pre>
@@ -5301,7 +5313,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_temp_db">open_temp_db<a class="headerlink" href="#open_temp_db" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L106">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L120">[Source]</a></span></p>
 <pre><code class="pony">fun box open_temp_db()
 : I32 val
 </code></pre>
@@ -5312,7 +5324,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_transient_db">open_transient_db<a class="headerlink" href="#open_transient_db" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L107">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L121">[Source]</a></span></p>
 <pre><code class="pony">fun box open_transient_db()
 : I32 val
 </code></pre>
@@ -5323,7 +5335,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_main_journal">open_main_journal<a class="headerlink" href="#open_main_journal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L108">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L122">[Source]</a></span></p>
 <pre><code class="pony">fun box open_main_journal()
 : I32 val
 </code></pre>
@@ -5334,7 +5346,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_temp_journal">open_temp_journal<a class="headerlink" href="#open_temp_journal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L109">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L123">[Source]</a></span></p>
 <pre><code class="pony">fun box open_temp_journal()
 : I32 val
 </code></pre>
@@ -5345,7 +5357,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_subjournal">open_subjournal<a class="headerlink" href="#open_subjournal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L110">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L124">[Source]</a></span></p>
 <pre><code class="pony">fun box open_subjournal()
 : I32 val
 </code></pre>
@@ -5356,7 +5368,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_master_journal">open_master_journal<a class="headerlink" href="#open_master_journal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L111">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L125">[Source]</a></span></p>
 <pre><code class="pony">fun box open_master_journal()
 : I32 val
 </code></pre>
@@ -5367,7 +5379,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_nomutex">open_nomutex<a class="headerlink" href="#open_nomutex" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L112">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L126">[Source]</a></span></p>
 <pre><code class="pony">fun box open_nomutex()
 : I32 val
 </code></pre>
@@ -5378,7 +5390,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_fullmutex">open_fullmutex<a class="headerlink" href="#open_fullmutex" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L113">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L127">[Source]</a></span></p>
 <pre><code class="pony">fun box open_fullmutex()
 : I32 val
 </code></pre>
@@ -5389,7 +5401,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_sharedcache">open_sharedcache<a class="headerlink" href="#open_sharedcache" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L114">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L128">[Source]</a></span></p>
 <pre><code class="pony">fun box open_sharedcache()
 : I32 val
 </code></pre>
@@ -5400,7 +5412,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_privatecache">open_privatecache<a class="headerlink" href="#open_privatecache" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L115">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L129">[Source]</a></span></p>
 <pre><code class="pony">fun box open_privatecache()
 : I32 val
 </code></pre>
@@ -5411,7 +5423,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="open_wal">open_wal<a class="headerlink" href="#open_wal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L116">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L130">[Source]</a></span></p>
 <pre><code class="pony">fun box open_wal()
 : I32 val
 </code></pre>
@@ -5422,7 +5434,7 @@ exist and opens it in read+write mode.</p>
 </ul>
 <hr />
 <h3 id="prepare_persistent">prepare_persistent<a class="headerlink" href="#prepare_persistent" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L119">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L133">[Source]</a></span></p>
 <p>A hint to the query planner that the prepared statement will be retained
 for a long time and probably reused many times.</p>
 <pre><code class="pony">fun box prepare_persistent()
@@ -5435,7 +5447,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="prepare_no_vtab">prepare_no_vtab<a class="headerlink" href="#prepare_no_vtab" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L126">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L140">[Source]</a></span></p>
 <p>The SQLITE_PREPARE_NO_VTAB flag causes the SQL compiler to return an error
 (error rc SQLITE_ERROR) if the statement uses any virtual tables.</p>
 <pre><code class="pony">fun box prepare_no_vtab()
@@ -5448,7 +5460,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="data_integer">data_integer<a class="headerlink" href="#data_integer" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L134">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L148">[Source]</a></span></p>
 <p>Integer data-type</p>
 <pre><code class="pony">fun box data_integer()
 : I32 val
@@ -5460,7 +5472,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="data_float">data_float<a class="headerlink" href="#data_float" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L140">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L154">[Source]</a></span></p>
 <p>Float data-type</p>
 <pre><code class="pony">fun box data_float()
 : I32 val
@@ -5472,7 +5484,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="data_text">data_text<a class="headerlink" href="#data_text" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L146">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L160">[Source]</a></span></p>
 <p>Text data-type</p>
 <pre><code class="pony">fun box data_text()
 : I32 val
@@ -5484,7 +5496,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="data_blob">data_blob<a class="headerlink" href="#data_blob" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L152">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L166">[Source]</a></span></p>
 <p>Blob data-type</p>
 <pre><code class="pony">fun box data_blob()
 : I32 val
@@ -5496,7 +5508,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="data_null">data_null<a class="headerlink" href="#data_null" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L158">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L172">[Source]</a></span></p>
 <p>Null data-type</p>
 <pre><code class="pony">fun box data_null()
 : I32 val
@@ -5508,7 +5520,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ok">result_ok<a class="headerlink" href="#result_ok" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L165">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L179">[Source]</a></span></p>
 <p>Successful result</p>
 <pre><code class="pony">fun box result_ok()
 : I32 val
@@ -5520,7 +5532,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_err">result_err<a class="headerlink" href="#result_err" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L171">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L185">[Source]</a></span></p>
 <p>Generic error</p>
 <pre><code class="pony">fun box result_err()
 : I32 val
@@ -5532,7 +5544,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_internal">result_internal<a class="headerlink" href="#result_internal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L177">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L191">[Source]</a></span></p>
 <p>Internal logic error in SQLite</p>
 <pre><code class="pony">fun box result_internal()
 : I32 val
@@ -5544,7 +5556,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_perm">result_perm<a class="headerlink" href="#result_perm" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L183">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L197">[Source]</a></span></p>
 <p>Access permission denied</p>
 <pre><code class="pony">fun box result_perm()
 : I32 val
@@ -5556,7 +5568,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_abort">result_abort<a class="headerlink" href="#result_abort" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L189">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L203">[Source]</a></span></p>
 <p>Callback routine requested an abort</p>
 <pre><code class="pony">fun box result_abort()
 : I32 val
@@ -5568,7 +5580,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_busy">result_busy<a class="headerlink" href="#result_busy" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L195">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L209">[Source]</a></span></p>
 <p>The database file is locked</p>
 <pre><code class="pony">fun box result_busy()
 : I32 val
@@ -5580,7 +5592,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_locked">result_locked<a class="headerlink" href="#result_locked" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L201">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L215">[Source]</a></span></p>
 <p>A table in the database is locked</p>
 <pre><code class="pony">fun box result_locked()
 : I32 val
@@ -5592,7 +5604,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_nomem">result_nomem<a class="headerlink" href="#result_nomem" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L207">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L221">[Source]</a></span></p>
 <p>A malloc() failed</p>
 <pre><code class="pony">fun box result_nomem()
 : I32 val
@@ -5604,7 +5616,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly">result_readonly<a class="headerlink" href="#result_readonly" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L213">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L227">[Source]</a></span></p>
 <p>Attempt to write a readonly database</p>
 <pre><code class="pony">fun box result_readonly()
 : I32 val
@@ -5616,7 +5628,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_interrupt">result_interrupt<a class="headerlink" href="#result_interrupt" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L219">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L233">[Source]</a></span></p>
 <p>Operation terminated by <code>sqlite3_interrupt()</code></p>
 <pre><code class="pony">fun box result_interrupt()
 : I32 val
@@ -5628,7 +5640,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr">result_ioerr<a class="headerlink" href="#result_ioerr" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L225">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L239">[Source]</a></span></p>
 <p>Some kind of disk I/O error occurred</p>
 <pre><code class="pony">fun box result_ioerr()
 : I32 val
@@ -5640,7 +5652,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_corrupt">result_corrupt<a class="headerlink" href="#result_corrupt" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L231">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L245">[Source]</a></span></p>
 <p>The database disk image is malformed</p>
 <pre><code class="pony">fun box result_corrupt()
 : I32 val
@@ -5652,7 +5664,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_notfound">result_notfound<a class="headerlink" href="#result_notfound" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L237">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L251">[Source]</a></span></p>
 <p>Unknown opcode in <code>sqlite3_file_control()</code></p>
 <pre><code class="pony">fun box result_notfound()
 : I32 val
@@ -5664,7 +5676,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_full">result_full<a class="headerlink" href="#result_full" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L243">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L257">[Source]</a></span></p>
 <p>Insertion failed because database is full</p>
 <pre><code class="pony">fun box result_full()
 : I32 val
@@ -5676,7 +5688,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen">result_cantopen<a class="headerlink" href="#result_cantopen" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L249">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L263">[Source]</a></span></p>
 <p>Unable to open the database file</p>
 <pre><code class="pony">fun box result_cantopen()
 : I32 val
@@ -5688,7 +5700,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_protocol">result_protocol<a class="headerlink" href="#result_protocol" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L255">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L269">[Source]</a></span></p>
 <p>Database lock protocol error</p>
 <pre><code class="pony">fun box result_protocol()
 : I32 val
@@ -5700,7 +5712,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_empty">result_empty<a class="headerlink" href="#result_empty" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L261">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L275">[Source]</a></span></p>
 <p>Internal use only</p>
 <pre><code class="pony">fun box result_empty()
 : I32 val
@@ -5712,7 +5724,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_schema">result_schema<a class="headerlink" href="#result_schema" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L267">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L281">[Source]</a></span></p>
 <p>The database schema changed</p>
 <pre><code class="pony">fun box result_schema()
 : I32 val
@@ -5724,7 +5736,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_toobig">result_toobig<a class="headerlink" href="#result_toobig" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L273">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L287">[Source]</a></span></p>
 <p>String or BLOB exceeds size limit</p>
 <pre><code class="pony">fun box result_toobig()
 : I32 val
@@ -5736,7 +5748,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint">result_constraint<a class="headerlink" href="#result_constraint" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L279">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L293">[Source]</a></span></p>
 <p>Abort due to constraint violation</p>
 <pre><code class="pony">fun box result_constraint()
 : I32 val
@@ -5748,7 +5760,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_mismatch">result_mismatch<a class="headerlink" href="#result_mismatch" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L285">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L299">[Source]</a></span></p>
 <p>Data type mismatch</p>
 <pre><code class="pony">fun box result_mismatch()
 : I32 val
@@ -5760,7 +5772,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_misuse">result_misuse<a class="headerlink" href="#result_misuse" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L291">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L305">[Source]</a></span></p>
 <p>Library used incorrectly</p>
 <pre><code class="pony">fun box result_misuse()
 : I32 val
@@ -5772,7 +5784,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_nolfs">result_nolfs<a class="headerlink" href="#result_nolfs" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L297">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L311">[Source]</a></span></p>
 <p>Uses OS features not supported on host</p>
 <pre><code class="pony">fun box result_nolfs()
 : I32 val
@@ -5784,7 +5796,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_auth">result_auth<a class="headerlink" href="#result_auth" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L303">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L317">[Source]</a></span></p>
 <p>Authorization denied</p>
 <pre><code class="pony">fun box result_auth()
 : I32 val
@@ -5796,7 +5808,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_format">result_format<a class="headerlink" href="#result_format" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L309">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L323">[Source]</a></span></p>
 <p>Not used</p>
 <pre><code class="pony">fun box result_format()
 : I32 val
@@ -5808,7 +5820,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_range">result_range<a class="headerlink" href="#result_range" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L315">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L329">[Source]</a></span></p>
 <p>2nd parameter to sqlite3_bind out of range</p>
 <pre><code class="pony">fun box result_range()
 : I32 val
@@ -5820,7 +5832,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_notadb">result_notadb<a class="headerlink" href="#result_notadb" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L321">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L335">[Source]</a></span></p>
 <p>File opened that is not a database file</p>
 <pre><code class="pony">fun box result_notadb()
 : I32 val
@@ -5832,7 +5844,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_notice">result_notice<a class="headerlink" href="#result_notice" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L327">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L341">[Source]</a></span></p>
 <p>Notifications from <code>sqlite3_log()</code></p>
 <pre><code class="pony">fun box result_notice()
 : I32 val
@@ -5844,7 +5856,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_warning">result_warning<a class="headerlink" href="#result_warning" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L333">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L347">[Source]</a></span></p>
 <p>Warnings from <code>sqlite3_log()</code></p>
 <pre><code class="pony">fun box result_warning()
 : I32 val
@@ -5856,7 +5868,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_row">result_row<a class="headerlink" href="#result_row" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L339">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L353">[Source]</a></span></p>
 <p><code>sqlite3_step()</code> has another row ready</p>
 <pre><code class="pony">fun box result_row()
 : I32 val
@@ -5868,7 +5880,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_done">result_done<a class="headerlink" href="#result_done" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L345">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L359">[Source]</a></span></p>
 <p><code>sqlite3_step()</code> has finished executing</p>
 <pre><code class="pony">fun box result_done()
 : I32 val
@@ -5880,7 +5892,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_error_missing_collseq">result_error_missing_collseq<a class="headerlink" href="#result_error_missing_collseq" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L353">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L367">[Source]</a></span></p>
 <pre><code class="pony">fun box result_error_missing_collseq()
 : I32 val
 </code></pre>
@@ -5891,7 +5903,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_error_retry">result_error_retry<a class="headerlink" href="#result_error_retry" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L356">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L370">[Source]</a></span></p>
 <pre><code class="pony">fun box result_error_retry()
 : I32 val
 </code></pre>
@@ -5902,7 +5914,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_error_snapshot">result_error_snapshot<a class="headerlink" href="#result_error_snapshot" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L359">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L373">[Source]</a></span></p>
 <pre><code class="pony">fun box result_error_snapshot()
 : I32 val
 </code></pre>
@@ -5913,7 +5925,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_read">result_ioerr_read<a class="headerlink" href="#result_ioerr_read" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L362">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L376">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_read()
 : I32 val
 </code></pre>
@@ -5924,7 +5936,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_short_read">result_ioerr_short_read<a class="headerlink" href="#result_ioerr_short_read" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L365">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L379">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_short_read()
 : I32 val
 </code></pre>
@@ -5935,7 +5947,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_write">result_ioerr_write<a class="headerlink" href="#result_ioerr_write" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L368">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L382">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_write()
 : I32 val
 </code></pre>
@@ -5946,7 +5958,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_fsync">result_ioerr_fsync<a class="headerlink" href="#result_ioerr_fsync" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L371">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L385">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_fsync()
 : I32 val
 </code></pre>
@@ -5957,7 +5969,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_dir_fsync">result_ioerr_dir_fsync<a class="headerlink" href="#result_ioerr_dir_fsync" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L374">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L388">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_dir_fsync()
 : I32 val
 </code></pre>
@@ -5968,7 +5980,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_truncate">result_ioerr_truncate<a class="headerlink" href="#result_ioerr_truncate" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L377">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L391">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_truncate()
 : I32 val
 </code></pre>
@@ -5979,7 +5991,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_fstat">result_ioerr_fstat<a class="headerlink" href="#result_ioerr_fstat" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L380">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L394">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_fstat()
 : I32 val
 </code></pre>
@@ -5990,7 +6002,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_unlock">result_ioerr_unlock<a class="headerlink" href="#result_ioerr_unlock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L383">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L397">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_unlock()
 : I32 val
 </code></pre>
@@ -6001,7 +6013,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_rdlock">result_ioerr_rdlock<a class="headerlink" href="#result_ioerr_rdlock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L386">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L400">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_rdlock()
 : I32 val
 </code></pre>
@@ -6012,7 +6024,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_delete">result_ioerr_delete<a class="headerlink" href="#result_ioerr_delete" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L389">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L403">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_delete()
 : I32 val
 </code></pre>
@@ -6023,7 +6035,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_blocked">result_ioerr_blocked<a class="headerlink" href="#result_ioerr_blocked" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L392">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L406">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_blocked()
 : I32 val
 </code></pre>
@@ -6034,7 +6046,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_nomem">result_ioerr_nomem<a class="headerlink" href="#result_ioerr_nomem" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L395">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L409">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_nomem()
 : I32 val
 </code></pre>
@@ -6045,7 +6057,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_access">result_ioerr_access<a class="headerlink" href="#result_ioerr_access" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L398">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L412">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_access()
 : I32 val
 </code></pre>
@@ -6056,7 +6068,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_checkreservedlock">result_ioerr_checkreservedlock<a class="headerlink" href="#result_ioerr_checkreservedlock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L401">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L415">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_checkreservedlock()
 : I32 val
 </code></pre>
@@ -6067,7 +6079,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_lock">result_ioerr_lock<a class="headerlink" href="#result_ioerr_lock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L404">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L418">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_lock()
 : I32 val
 </code></pre>
@@ -6078,7 +6090,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_close">result_ioerr_close<a class="headerlink" href="#result_ioerr_close" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L407">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L421">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_close()
 : I32 val
 </code></pre>
@@ -6089,7 +6101,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_dir_close">result_ioerr_dir_close<a class="headerlink" href="#result_ioerr_dir_close" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L410">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L424">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_dir_close()
 : I32 val
 </code></pre>
@@ -6100,7 +6112,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_shmopen">result_ioerr_shmopen<a class="headerlink" href="#result_ioerr_shmopen" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L413">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L427">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_shmopen()
 : I32 val
 </code></pre>
@@ -6111,7 +6123,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_shmsize">result_ioerr_shmsize<a class="headerlink" href="#result_ioerr_shmsize" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L416">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L430">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_shmsize()
 : I32 val
 </code></pre>
@@ -6122,7 +6134,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_shmlock">result_ioerr_shmlock<a class="headerlink" href="#result_ioerr_shmlock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L419">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L433">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_shmlock()
 : I32 val
 </code></pre>
@@ -6133,7 +6145,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_shmmap">result_ioerr_shmmap<a class="headerlink" href="#result_ioerr_shmmap" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L422">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L436">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_shmmap()
 : I32 val
 </code></pre>
@@ -6144,7 +6156,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_seek">result_ioerr_seek<a class="headerlink" href="#result_ioerr_seek" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L425">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L439">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_seek()
 : I32 val
 </code></pre>
@@ -6155,7 +6167,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_delete_noent">result_ioerr_delete_noent<a class="headerlink" href="#result_ioerr_delete_noent" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L428">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L442">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_delete_noent()
 : I32 val
 </code></pre>
@@ -6166,7 +6178,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_mmap">result_ioerr_mmap<a class="headerlink" href="#result_ioerr_mmap" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L431">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L445">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_mmap()
 : I32 val
 </code></pre>
@@ -6177,7 +6189,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_gettemppath">result_ioerr_gettemppath<a class="headerlink" href="#result_ioerr_gettemppath" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L434">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L448">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_gettemppath()
 : I32 val
 </code></pre>
@@ -6188,7 +6200,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_convpath">result_ioerr_convpath<a class="headerlink" href="#result_ioerr_convpath" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L437">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L451">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_convpath()
 : I32 val
 </code></pre>
@@ -6199,7 +6211,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_vnode">result_ioerr_vnode<a class="headerlink" href="#result_ioerr_vnode" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L440">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L454">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_vnode()
 : I32 val
 </code></pre>
@@ -6210,7 +6222,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_result_auth">result_ioerr_result_auth<a class="headerlink" href="#result_ioerr_result_auth" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L443">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L457">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_result_auth()
 : I32 val
 </code></pre>
@@ -6221,7 +6233,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_begin_atomic">result_ioerr_begin_atomic<a class="headerlink" href="#result_ioerr_begin_atomic" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L446">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L460">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_begin_atomic()
 : I32 val
 </code></pre>
@@ -6232,7 +6244,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_commit_atomic">result_ioerr_commit_atomic<a class="headerlink" href="#result_ioerr_commit_atomic" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L449">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L463">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_commit_atomic()
 : I32 val
 </code></pre>
@@ -6243,7 +6255,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ioerr_rollback_atomic">result_ioerr_rollback_atomic<a class="headerlink" href="#result_ioerr_rollback_atomic" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L452">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L466">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ioerr_rollback_atomic()
 : I32 val
 </code></pre>
@@ -6254,7 +6266,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_locked_sharedcache">result_locked_sharedcache<a class="headerlink" href="#result_locked_sharedcache" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L455">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L469">[Source]</a></span></p>
 <pre><code class="pony">fun box result_locked_sharedcache()
 : I32 val
 </code></pre>
@@ -6265,7 +6277,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_locked_vtab">result_locked_vtab<a class="headerlink" href="#result_locked_vtab" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L458">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L472">[Source]</a></span></p>
 <pre><code class="pony">fun box result_locked_vtab()
 : I32 val
 </code></pre>
@@ -6276,7 +6288,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_busy_recovery">result_busy_recovery<a class="headerlink" href="#result_busy_recovery" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L461">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L475">[Source]</a></span></p>
 <pre><code class="pony">fun box result_busy_recovery()
 : I32 val
 </code></pre>
@@ -6287,7 +6299,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_busy_snapshot">result_busy_snapshot<a class="headerlink" href="#result_busy_snapshot" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L464">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L478">[Source]</a></span></p>
 <pre><code class="pony">fun box result_busy_snapshot()
 : I32 val
 </code></pre>
@@ -6298,7 +6310,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen_notempdir">result_cantopen_notempdir<a class="headerlink" href="#result_cantopen_notempdir" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L467">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L481">[Source]</a></span></p>
 <pre><code class="pony">fun box result_cantopen_notempdir()
 : I32 val
 </code></pre>
@@ -6309,7 +6321,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen_isdir">result_cantopen_isdir<a class="headerlink" href="#result_cantopen_isdir" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L470">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L484">[Source]</a></span></p>
 <pre><code class="pony">fun box result_cantopen_isdir()
 : I32 val
 </code></pre>
@@ -6320,7 +6332,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen_fullpath">result_cantopen_fullpath<a class="headerlink" href="#result_cantopen_fullpath" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L473">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L487">[Source]</a></span></p>
 <pre><code class="pony">fun box result_cantopen_fullpath()
 : I32 val
 </code></pre>
@@ -6331,7 +6343,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen_convpath">result_cantopen_convpath<a class="headerlink" href="#result_cantopen_convpath" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L476">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L490">[Source]</a></span></p>
 <pre><code class="pony">fun box result_cantopen_convpath()
 : I32 val
 </code></pre>
@@ -6342,7 +6354,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_cantopen_dirtywal">result_cantopen_dirtywal<a class="headerlink" href="#result_cantopen_dirtywal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L479">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L493">[Source]</a></span></p>
 <pre><code class="pony">fun box result_cantopen_dirtywal()
 : I32 val
 </code></pre>
@@ -6353,7 +6365,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_corrupt_vtab">result_corrupt_vtab<a class="headerlink" href="#result_corrupt_vtab" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L482">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L496">[Source]</a></span></p>
 <pre><code class="pony">fun box result_corrupt_vtab()
 : I32 val
 </code></pre>
@@ -6364,7 +6376,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_corrupt_sequence">result_corrupt_sequence<a class="headerlink" href="#result_corrupt_sequence" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L485">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L499">[Source]</a></span></p>
 <pre><code class="pony">fun box result_corrupt_sequence()
 : I32 val
 </code></pre>
@@ -6375,7 +6387,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_recovery">result_readonly_recovery<a class="headerlink" href="#result_readonly_recovery" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L488">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L502">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_recovery()
 : I32 val
 </code></pre>
@@ -6386,7 +6398,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_cantlock">result_readonly_cantlock<a class="headerlink" href="#result_readonly_cantlock" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L491">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L505">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_cantlock()
 : I32 val
 </code></pre>
@@ -6397,7 +6409,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_rollback">result_readonly_rollback<a class="headerlink" href="#result_readonly_rollback" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L494">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L508">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_rollback()
 : I32 val
 </code></pre>
@@ -6408,7 +6420,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_dbmoved">result_readonly_dbmoved<a class="headerlink" href="#result_readonly_dbmoved" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L497">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L511">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_dbmoved()
 : I32 val
 </code></pre>
@@ -6419,7 +6431,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_cantinit">result_readonly_cantinit<a class="headerlink" href="#result_readonly_cantinit" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L500">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L514">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_cantinit()
 : I32 val
 </code></pre>
@@ -6430,7 +6442,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_readonly_directory">result_readonly_directory<a class="headerlink" href="#result_readonly_directory" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L503">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L517">[Source]</a></span></p>
 <pre><code class="pony">fun box result_readonly_directory()
 : I32 val
 </code></pre>
@@ -6441,7 +6453,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_abort_rollback">result_abort_rollback<a class="headerlink" href="#result_abort_rollback" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L506">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L520">[Source]</a></span></p>
 <pre><code class="pony">fun box result_abort_rollback()
 : I32 val
 </code></pre>
@@ -6452,7 +6464,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_check">result_constraint_check<a class="headerlink" href="#result_constraint_check" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L509">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L523">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_check()
 : I32 val
 </code></pre>
@@ -6463,7 +6475,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_commithook">result_constraint_commithook<a class="headerlink" href="#result_constraint_commithook" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L512">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L526">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_commithook()
 : I32 val
 </code></pre>
@@ -6474,7 +6486,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_foreignkey">result_constraint_foreignkey<a class="headerlink" href="#result_constraint_foreignkey" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L515">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L529">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_foreignkey()
 : I32 val
 </code></pre>
@@ -6485,7 +6497,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_function">result_constraint_function<a class="headerlink" href="#result_constraint_function" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L518">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L532">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_function()
 : I32 val
 </code></pre>
@@ -6496,7 +6508,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_notnull">result_constraint_notnull<a class="headerlink" href="#result_constraint_notnull" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L521">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L535">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_notnull()
 : I32 val
 </code></pre>
@@ -6507,7 +6519,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_primarykey">result_constraint_primarykey<a class="headerlink" href="#result_constraint_primarykey" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L524">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L538">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_primarykey()
 : I32 val
 </code></pre>
@@ -6518,7 +6530,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_trigger">result_constraint_trigger<a class="headerlink" href="#result_constraint_trigger" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L527">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L541">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_trigger()
 : I32 val
 </code></pre>
@@ -6529,7 +6541,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_unique">result_constraint_unique<a class="headerlink" href="#result_constraint_unique" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L530">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L544">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_unique()
 : I32 val
 </code></pre>
@@ -6540,7 +6552,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_vtab">result_constraint_vtab<a class="headerlink" href="#result_constraint_vtab" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L533">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L547">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_vtab()
 : I32 val
 </code></pre>
@@ -6551,7 +6563,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_constraint_rowid">result_constraint_rowid<a class="headerlink" href="#result_constraint_rowid" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L536">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L550">[Source]</a></span></p>
 <pre><code class="pony">fun box result_constraint_rowid()
 : I32 val
 </code></pre>
@@ -6562,7 +6574,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_notice_recover_wal">result_notice_recover_wal<a class="headerlink" href="#result_notice_recover_wal" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L539">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L553">[Source]</a></span></p>
 <pre><code class="pony">fun box result_notice_recover_wal()
 : I32 val
 </code></pre>
@@ -6573,7 +6585,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_notice_recover_rollback">result_notice_recover_rollback<a class="headerlink" href="#result_notice_recover_rollback" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L542">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L556">[Source]</a></span></p>
 <pre><code class="pony">fun box result_notice_recover_rollback()
 : I32 val
 </code></pre>
@@ -6584,7 +6596,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_warning_autoindex">result_warning_autoindex<a class="headerlink" href="#result_warning_autoindex" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L545">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L559">[Source]</a></span></p>
 <pre><code class="pony">fun box result_warning_autoindex()
 : I32 val
 </code></pre>
@@ -6595,7 +6607,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_auth_user">result_auth_user<a class="headerlink" href="#result_auth_user" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L548">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L562">[Source]</a></span></p>
 <pre><code class="pony">fun box result_auth_user()
 : I32 val
 </code></pre>
@@ -6606,7 +6618,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="result_ok_load_permanently">result_ok_load_permanently<a class="headerlink" href="#result_ok_load_permanently" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L551">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L565">[Source]</a></span></p>
 <pre><code class="pony">fun box result_ok_load_permanently()
 : I32 val
 </code></pre>
@@ -6617,7 +6629,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="eq">eq<a class="headerlink" href="#eq" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L45">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L59">[Source]</a></span></p>
 <pre><code class="pony">fun box eq(
   that: Sqlite val)
 : Bool val
@@ -6633,7 +6645,7 @@ for a long time and probably reused many times.</p>
 </ul>
 <hr />
 <h3 id="ne">ne<a class="headerlink" href="#ne" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L45">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L59">[Source]</a></span></p>
 <pre><code class="pony">fun box ne(
   that: Sqlite val)
 : Bool val

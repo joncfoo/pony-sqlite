@@ -254,6 +254,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../sqlite-SqliteZeroBlob/" title="class SqliteZeroBlob" class="md-nav__link">
+      class SqliteZeroBlob
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../sqlite-SqliteOpenFlag/" title="type SqliteOpenFlag" class="md-nav__link">
       type SqliteOpenFlag
     </a>
@@ -2682,14 +2694,28 @@ use @sqlite3_step[SqliteResultCode](statement: Pointer[_Statement] tag)
 use @sqlite3_reset[SqliteResultCode](statement: Pointer[_Statement] tag)
 use @sqlite3_finalize[SqliteResultCode](statement: Pointer[_Statement] tag)
 
+use @sqlite3_bind_parameter_count[I32](statement: Pointer[_Statement] tag)
+use @sqlite3_bind_parameter_index[I32](statement: Pointer[_Statement] tag, name: Pointer[U8] tag)
+use @sqlite3_bind_parameter_name[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
+use @sqlite3_bind_null[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32)
+use @sqlite3_bind_double[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: F64)
+use @sqlite3_bind_int[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I32)
+use @sqlite3_bind_int64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I64)
+use @sqlite3_bind_text[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
+// use @sqlite3_bind_text64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: U64, encoding: U8)
+use @sqlite3_bind_blob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
+// use @sqlite3_bind_blob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I64)
+use @sqlite3_bind_zeroblob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I32)
+use @sqlite3_bind_zeroblob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I64)
+
 use @sqlite3_column_count[I32](statement: Pointer[_Statement] tag)
+use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_blob[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_double[F64](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_int[I32](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_int64[I64](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_text[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_bytes[I32](statement: Pointer[_Statement] tag, column: I32)
-use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
 
 
 primitive Sqlite
@@ -3263,7 +3289,7 @@ class SqliteConnection
     var sql_tail_unused: Pointer[U8] = sql_tail_unused.create()
     let rc = @sqlite3_prepare_v3(
       _conn,
-      sql'.cstring(),
+      sql'.cpointer(),
       sql'.size().i32()+1, // include terminating null character
       prepare_flags,
       addressof stmt,
@@ -3288,7 +3314,7 @@ class SqliteStatement
   statement when you have finished working with it.  Using the statement
   after it has been closed results in undefined behaviour.
 
-  Note: The `double`, `int`, `int64`, `text`, and `blob` functions potentially
+  Note: The `f64`, `i32`, `i64`, `string`, and `array` functions potentially
   coerce data to fit the type retrieved. This is a facet of SQLite.
   See https://www.sqlite.org/datatype3.html for more details.
   &quot;&quot;&quot;
@@ -3322,6 +3348,74 @@ class SqliteStatement
     Statement closed status.
     &quot;&quot;&quot;
     _closed
+
+  fun bind(index: I32, value: (None | F64 | I32 | I64 | String | Array[U8] | SqliteZeroBlob)): SqliteResultCode =&gt;
+    &quot;&quot;&quot;
+    Binds a value to a parameter in the statement.
+
+    `index` is the index of the parameter (starting at 0).
+
+    Parameters in a SQL statement can take the form of: `?`, `?NNN`, `:VVV`,
+    `@VVV`, and `$VVV`, where `NNN` is an integer and `VVV` is an alphanumeric
+    identifier.
+
+    Note: The maximum length of `String` and `Array[U8]` this method supports
+    is limited to `i32.max_value()`.  Please file an issue if you want to
+    support larger strings and arrays.
+
+    See https://sqlite.org/c3ref/bind_blob.html
+    &quot;&quot;&quot;
+    match value
+    | None =&gt;
+      @sqlite3_bind_null(_stmt, index+1)
+    | let v: F64 =&gt;
+      @sqlite3_bind_double(_stmt, index+1, v)
+    | let v: I32 =&gt;
+      @sqlite3_bind_int(_stmt, index+1, v)
+    | let v: I64 =&gt;
+      @sqlite3_bind_int64(_stmt, index+1, v)
+    | let v: String =&gt;
+        @sqlite3_bind_text(_stmt, index+1, v.cpointer(), v.size().i32())
+    | let v: Array[U8] =&gt;
+        @sqlite3_bind_blob(_stmt, index+1, v.cpointer(), v.size().i32())
+    | let v: SqliteZeroBlob =&gt;
+      match v.length
+      | let v': I32 =&gt;
+        @sqlite3_bind_zeroblob(_stmt, index+1, v')
+      | let v': I64 =&gt;
+        @sqlite3_bind_zeroblob64(_stmt, index+1, v')
+      end
+    end
+
+  fun bind_count(): I32 =&gt;
+    &quot;&quot;&quot;
+    Returns the total number of bound parameters in the statement.
+
+    See https://sqlite.org/c3ref/bind_parameter_count.html
+    &quot;&quot;&quot;
+    @sqlite3_bind_parameter_count(_stmt)
+
+  fun bind_index(name: String): I32 =&gt;
+    &quot;&quot;&quot;
+    Returns the index of the named parameter.
+
+    Note: indexes start at 0 unlike SQLite which starts at 1.
+
+    See https://sqlite.org/c3ref/bind_parameter_index.html
+    &quot;&quot;&quot;
+    @sqlite3_bind_parameter_index(_stmt, name.cpointer()) - 1
+
+  fun bind_name(index: I32): String iso^ =&gt;
+    &quot;&quot;&quot;
+    Returns the name of the parameter at the specified index.
+
+    Note: indexes start at 0 unlike SQLite which starts at 1.
+
+    See https://sqlite.org/c3ref/bind_parameter_name.html
+    &quot;&quot;&quot;
+    recover
+      String.from_cstring(@sqlite3_bind_parameter_name(_stmt, index + 1))
+    end
 
   fun step(): SqliteResultCode =&gt;
     &quot;&quot;&quot;
@@ -3366,25 +3460,25 @@ class SqliteStatement
     &quot;&quot;&quot;
     @sqlite3_column_type(_stmt, column)
 
-  fun double(column: I32): F64 =&gt;
+  fun f64(column: I32): F64 =&gt;
     &quot;&quot;&quot;
     Retrieve the column as a `F64` value.
     &quot;&quot;&quot;
     @sqlite3_column_double(_stmt, column)
 
-  fun int(column: I32): I32 =&gt;
+  fun i32(column: I32): I32 =&gt;
     &quot;&quot;&quot;
     Retrieve the column as an `I32` value.
     &quot;&quot;&quot;
     @sqlite3_column_int(_stmt, column)
 
-  fun int64(column: I32): I64 =&gt;
+  fun i64(column: I32): I64 =&gt;
     &quot;&quot;&quot;
     Retrieve the column as an `I64` value.
     &quot;&quot;&quot;
     @sqlite3_column_int64(_stmt, column)
 
-  fun text(column: I32): String iso^ =&gt;
+  fun string(column: I32): String iso^ =&gt;
     &quot;&quot;&quot;
     Retrieve the column as an `String` value.
     &quot;&quot;&quot;
@@ -3392,7 +3486,7 @@ class SqliteStatement
     let length = @sqlite3_column_bytes(_stmt, column).usize()
     String.copy_cpointer(str, length).clone()
 
-  fun blob(column: I32): Array[U8] ref^ =&gt;
+  fun array(column: I32): Array[U8] ref^ =&gt;
     &quot;&quot;&quot;
     Retrieve the column as a BLOB (`Array[U8]`).
     &quot;&quot;&quot;
@@ -3421,6 +3515,15 @@ class SqliteError
         .&gt;append(description)
         .&gt;append(&quot;')&quot;)
     end
+
+
+class SqliteZeroBlob
+  &quot;&quot;&quot;
+  Placeholder used tell SQLite to fill a blob with 0s of `length`.
+  &quot;&quot;&quot;
+  let length: (I32 | I64)
+  new create(length': (I32 | I64)) =&gt;
+    length = length'
 
 
 primitive _Connection

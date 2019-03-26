@@ -335,6 +335,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../sqlite-SqliteZeroBlob/" title="class SqliteZeroBlob" class="md-nav__link">
+      class SqliteZeroBlob
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../sqlite-SqliteOpenFlag/" title="type SqliteOpenFlag" class="md-nav__link">
       type SqliteOpenFlag
     </a>
@@ -2792,7 +2804,7 @@
                 
                 
                 <h1 id="sqliteconnection">SqliteConnection<a class="headerlink" href="#sqliteconnection" title="Permanent link">&para;</a></h1>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L555">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L569">[Source]</a></span></p>
 <p>A connection to a SQLite database. Use this to create SQL statements. Call
 <code>close()</code> when you have finished working with the database.</p>
 <pre><code class="pony">class ref SqliteConnection
@@ -2800,7 +2812,7 @@
 
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <h3 id="close">close<a class="headerlink" href="#close" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L574">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L588">[Source]</a></span></p>
 <p>Closes the connection to the database.</p>
 <pre><code class="pony">fun ref close()
 : I32 val
@@ -2812,7 +2824,7 @@
 </ul>
 <hr />
 <h3 id="closed">closed<a class="headerlink" href="#closed" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L585">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L599">[Source]</a></span></p>
 <p>Connection closed status.</p>
 <pre><code class="pony">fun box closed()
 : Bool val
@@ -2824,7 +2836,7 @@
 </ul>
 <hr />
 <h3 id="sql">sql<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L591">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L605">[Source]</a></span></p>
 <p>Create a SQL statement to be executed.  Returns <code>SqliteStatement</code> if <code>sql'</code>
 is a valid SQL statement, otherwise <code>SqliteError</code> is returned. Be sure
 to close the statement when you have finished working with it.</p>

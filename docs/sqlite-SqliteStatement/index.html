@@ -293,6 +293,42 @@
         
           
             <li class="md-nav__item">
+    <a href="#bind" title="bind" class="md-nav__link">
+    bind
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_count" title="bind_count" class="md-nav__link">
+    bind_count
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_index" title="bind_index" class="md-nav__link">
+    bind_index
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_name" title="bind_name" class="md-nav__link">
+    bind_name
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
     <a href="#step" title="step" class="md-nav__link">
     step
   </a>
@@ -329,8 +365,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#double" title="double" class="md-nav__link">
-    double
+    <a href="#f64" title="f64" class="md-nav__link">
+    f64
   </a>
   
 </li>
@@ -338,8 +374,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#int" title="int" class="md-nav__link">
-    int
+    <a href="#i32" title="i32" class="md-nav__link">
+    i32
   </a>
   
 </li>
@@ -347,8 +383,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#int64" title="int64" class="md-nav__link">
-    int64
+    <a href="#i64" title="i64" class="md-nav__link">
+    i64
   </a>
   
 </li>
@@ -356,8 +392,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#text" title="text" class="md-nav__link">
-    text
+    <a href="#string" title="string" class="md-nav__link">
+    string
   </a>
   
 </li>
@@ -365,8 +401,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#blob" title="blob" class="md-nav__link">
-    blob
+    <a href="#array" title="array" class="md-nav__link">
+    array
   </a>
   
 </li>
@@ -397,6 +433,18 @@
   <li class="md-nav__item">
     <a href="../sqlite-SqliteError/" title="class SqliteError" class="md-nav__link">
       class SqliteError
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sqlite-SqliteZeroBlob/" title="class SqliteZeroBlob" class="md-nav__link">
+      class SqliteZeroBlob
     </a>
   </li>
 
@@ -2833,6 +2881,42 @@
         
           
             <li class="md-nav__item">
+    <a href="#bind" title="bind" class="md-nav__link">
+    bind
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_count" title="bind_count" class="md-nav__link">
+    bind_count
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_index" title="bind_index" class="md-nav__link">
+    bind_index
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
+    <a href="#bind_name" title="bind_name" class="md-nav__link">
+    bind_name
+  </a>
+  
+</li>
+          
+        
+          
+            <li class="md-nav__item">
     <a href="#step" title="step" class="md-nav__link">
     step
   </a>
@@ -2869,8 +2953,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#double" title="double" class="md-nav__link">
-    double
+    <a href="#f64" title="f64" class="md-nav__link">
+    f64
   </a>
   
 </li>
@@ -2878,8 +2962,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#int" title="int" class="md-nav__link">
-    int
+    <a href="#i32" title="i32" class="md-nav__link">
+    i32
   </a>
   
 </li>
@@ -2887,8 +2971,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#int64" title="int64" class="md-nav__link">
-    int64
+    <a href="#i64" title="i64" class="md-nav__link">
+    i64
   </a>
   
 </li>
@@ -2896,8 +2980,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#text" title="text" class="md-nav__link">
-    text
+    <a href="#string" title="string" class="md-nav__link">
+    string
   </a>
   
 </li>
@@ -2905,8 +2989,8 @@
         
           
             <li class="md-nav__item">
-    <a href="#blob" title="blob" class="md-nav__link">
-    blob
+    <a href="#array" title="array" class="md-nav__link">
+    array
   </a>
   
 </li>
@@ -2936,11 +3020,11 @@
                 
                 
                 <h1 id="sqlitestatement">SqliteStatement<a class="headerlink" href="#sqlitestatement" title="Permanent link">&para;</a></h1>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L630">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L644">[Source]</a></span></p>
 <p>Prepared statement that points to a result set. Be sure to close the
 statement when you have finished working with it.  Using the statement
 after it has been closed results in undefined behaviour.</p>
-<p>Note: The <code>double</code>, <code>int</code>, <code>int64</code>, <code>text</code>, and <code>blob</code> functions potentially
+<p>Note: The <code>f64</code>, <code>i32</code>, <code>i64</code>, <code>string</code>, and <code>array</code> functions potentially
 coerce data to fit the type retrieved. This is a facet of SQLite.
 See https://www.sqlite.org/datatype3.html for more details.</p>
 <pre><code class="pony">class ref SqliteStatement
@@ -2948,7 +3032,7 @@ See https://www.sqlite.org/datatype3.html for more details.</p>
 
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <h3 id="close">close<a class="headerlink" href="#close" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L651">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L665">[Source]</a></span></p>
 <p>Closes the statement. Be sure <em>not</em> to use the statement after it has
 been closed.</p>
 <p>See https://sqlite.org/c3ref/finalize.html</p>
@@ -2962,7 +3046,7 @@ been closed.</p>
 </ul>
 <hr />
 <h3 id="closed">closed<a class="headerlink" href="#closed" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L665">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L679">[Source]</a></span></p>
 <p>Statement closed status.</p>
 <pre><code class="pony">fun box closed()
 : Bool val
@@ -2973,27 +3057,42 @@ been closed.</p>
 <li><a href="../builtin-Bool/">Bool</a> val</li>
 </ul>
 <hr />
-<h3 id="step">step<a class="headerlink" href="#step" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L671">[Source]</a></span></p>
-<p>Call <code>step()</code> repeatedly to iterate over the result set.</p>
-<p>If further rows exist, <code>Sqlite.result_row()</code> is returned.</p>
-<p>If the end of the result set is reached, <code>Sqlite.result_done()</code> is returned.</p>
-<p>See https://sqlite.org/c3ref/step.html</p>
-<pre><code class="pony">fun box step()
+<h3 id="bind">bind<a class="headerlink" href="#bind" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L685">[Source]</a></span></p>
+<p>Binds a value to a parameter in the statement.</p>
+<p><code>index</code> is the index of the parameter (starting at 0).</p>
+<p>Parameters in a SQL statement can take the form of: <code>?</code>, <code>?NNN</code>, <code>:VVV</code>,
+<code>@VVV</code>, and <code>$VVV</code>, where <code>NNN</code> is an integer and <code>VVV</code> is an alphanumeric
+identifier.</p>
+<p>Note: The maximum length of <code>String</code> and <code>Array[U8]</code> this method supports
+is limited to <code>i32.max_value()</code>.  Please file an issue if you want to
+support larger strings and arrays.</p>
+<p>See https://sqlite.org/c3ref/bind_blob.html</p>
+<pre><code class="pony">fun box bind(
+  index: I32 val,
+  value: (None val | F64 val | I32 val | 
+    I64 val | String val | Array[U8 val] ref | 
+    SqliteZeroBlob ref))
 : I32 val
 </code></pre>
 
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li>index: <a href="../builtin-I32/">I32</a> val</li>
+<li>value: (<a href="../builtin-None/">None</a> val | <a href="../builtin-F64/">F64</a> val | <a href="../builtin-I32/">I32</a> val | 
+    <a href="../builtin-I64/">I64</a> val | <a href="../builtin-String/">String</a> val | <a href="../builtin-Array/">Array</a>[<a href="../builtin-U8/">U8</a> val] ref | 
+    <a href="../sqlite-SqliteZeroBlob/">SqliteZeroBlob</a> ref)</li>
+</ul>
 <h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="../builtin-I32/">I32</a> val</li>
 </ul>
 <hr />
-<h3 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L687">[Source]</a></span></p>
-<p>Resets the statement to its initial state.  Call this if you wish to
-re-iterate over the result set.</p>
-<p>See https://sqlite.org/c3ref/reset.html</p>
-<pre><code class="pony">fun box reset()
+<h3 id="bind_count">bind_count<a class="headerlink" href="#bind_count" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L723">[Source]</a></span></p>
+<p>Returns the total number of bound parameters in the statement.</p>
+<p>See https://sqlite.org/c3ref/bind_parameter_count.html</p>
+<pre><code class="pony">fun box bind_count()
 : I32 val
 </code></pre>
 
@@ -3002,117 +3101,184 @@ re-iterate over the result set.</p>
 <li><a href="../builtin-I32/">I32</a> val</li>
 </ul>
 <hr />
+<h3 id="bind_index">bind_index<a class="headerlink" href="#bind_index" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L731">[Source]</a></span></p>
+<p>Returns the index of the named parameter.</p>
+<p>Note: indexes start at 0 unlike SQLite which starts at 1.</p>
+<p>See https://sqlite.org/c3ref/bind_parameter_index.html</p>
+<pre><code class="pony">fun box bind_index(
+  name: String val)
+: I32 val
+</code></pre>
+
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>name: <a href="../builtin-String/">String</a> val</li>
+</ul>
+<h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<hr />
+<h3 id="bind_name">bind_name<a class="headerlink" href="#bind_name" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L741">[Source]</a></span></p>
+<p>Returns the name of the parameter at the specified index.</p>
+<p>Note: indexes start at 0 unlike SQLite which starts at 1.</p>
+<p>See https://sqlite.org/c3ref/bind_parameter_name.html</p>
+<pre><code class="pony">fun box bind_name(
+  index: I32 val)
+: String iso^
+</code></pre>
+
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>index: <a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-String/">String</a> iso^</li>
+</ul>
+<hr />
+<h3 id="step">step<a class="headerlink" href="#step" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L753">[Source]</a></span></p>
+<p>Call <code>step()</code> repeatedly to iterate over the result set.</p>
+<p>If further rows exist, <code>Sqlite.result_row()</code> is returned.</p>
+<p>If the end of the result set is reached, <code>Sqlite.result_done()</code> is returned.</p>
+<p>See https://sqlite.org/c3ref/step.html</p>
+<pre><code class="pony">fun box step()
+: I32 val
+</code></pre>
+
+<h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<hr />
+<h3 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L769">[Source]</a></span></p>
+<p>Resets the statement to its initial state.  Call this if you wish to
+re-iterate over the result set.</p>
+<p>See https://sqlite.org/c3ref/reset.html</p>
+<pre><code class="pony">fun box reset()
+: I32 val
+</code></pre>
+
+<h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<hr />
 <h3 id="column_count">column_count<a class="headerlink" href="#column_count" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L700">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L782">[Source]</a></span></p>
 <p>The number of columns in the result set returned by this statement.</p>
 <p>See https://sqlite.org/c3ref/column_count.html</p>
 <pre><code class="pony">fun box column_count()
 : I32 val
 </code></pre>
 
-<h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
+<h4 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="../builtin-I32/">I32</a> val</li>
 </ul>
 <hr />
 <h3 id="data_type">data_type<a class="headerlink" href="#data_type" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L708">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L790">[Source]</a></span></p>
 <p>Returns the data-type for <em>initial</em> data-type of the column.</p>
 <pre><code class="pony">fun box data_type(
   column: I32 val)
 : I32 val
 </code></pre>
 
-<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
-<ul>
-<li>column: <a href="../builtin-I32/">I32</a> val</li>
-</ul>
-<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
-<ul>
-<li><a href="../builtin-I32/">I32</a> val</li>
-</ul>
-<hr />
-<h3 id="double">double<a class="headerlink" href="#double" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L714">[Source]</a></span></p>
-<p>Retrieve the column as a <code>F64</code> value.</p>
-<pre><code class="pony">fun box double(
-  column: I32 val)
-: F64 val
-</code></pre>
-
-<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>column: <a href="../builtin-I32/">I32</a> val</li>
-</ul>
-<h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h4>
-<ul>
-<li><a href="../builtin-F64/">F64</a> val</li>
-</ul>
-<hr />
-<h3 id="int">int<a class="headerlink" href="#int" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L720">[Source]</a></span></p>
-<p>Retrieve the column as an <code>I32</code> value.</p>
-<pre><code class="pony">fun box int(
-  column: I32 val)
-: I32 val
-</code></pre>
-
-<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li>column: <a href="../builtin-I32/">I32</a> val</li>
-</ul>
-<h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h4>
-<ul>
-<li><a href="../builtin-I32/">I32</a> val</li>
-</ul>
-<hr />
-<h3 id="int64">int64<a class="headerlink" href="#int64" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L726">[Source]</a></span></p>
-<p>Retrieve the column as an <code>I64</code> value.</p>
-<pre><code class="pony">fun box int64(
-  column: I32 val)
-: I64 val
-</code></pre>
-
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
 <ul>
 <li>column: <a href="../builtin-I32/">I32</a> val</li>
 </ul>
-<h4 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h4>
+<h4 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="../builtin-I64/">I64</a> val</li>
+<li><a href="../builtin-I32/">I32</a> val</li>
 </ul>
 <hr />
-<h3 id="text">text<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L732">[Source]</a></span></p>
-<p>Retrieve the column as an <code>String</code> value.</p>
-<pre><code class="pony">fun box text(
+<h3 id="f64">f64<a class="headerlink" href="#f64" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L796">[Source]</a></span></p>
+<p>Retrieve the column as a <code>F64</code> value.</p>
+<pre><code class="pony">fun box f64(
   column: I32 val)
-: String iso^
+: F64 val
 </code></pre>
 
 <h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>column: <a href="../builtin-I32/">I32</a> val</li>
 </ul>
-<h4 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h4>
+<h4 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="../builtin-String/">String</a> iso^</li>
+<li><a href="../builtin-F64/">F64</a> val</li>
 </ul>
 <hr />
-<h3 id="blob">blob<a class="headerlink" href="#blob" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/sqlite/sqlite/#L740">[Source]</a></span></p>
-<p>Retrieve the column as a BLOB (<code>Array[U8]</code>).</p>
-<pre><code class="pony">fun box blob(
+<h3 id="i32">i32<a class="headerlink" href="#i32" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L802">[Source]</a></span></p>
+<p>Retrieve the column as an <code>I32</code> value.</p>
+<pre><code class="pony">fun box i32(
   column: I32 val)
-: Array[U8 val] ref^
+: I32 val
 </code></pre>
 
 <h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>column: <a href="../builtin-I32/">I32</a> val</li>
 </ul>
-<h4 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h4>
+<h4 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<hr />
+<h3 id="i64">i64<a class="headerlink" href="#i64" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L808">[Source]</a></span></p>
+<p>Retrieve the column as an <code>I64</code> value.</p>
+<pre><code class="pony">fun box i64(
+  column: I32 val)
+: I64 val
+</code></pre>
+
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>column: <a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<h4 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-I64/">I64</a> val</li>
+</ul>
+<hr />
+<h3 id="string">string<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L814">[Source]</a></span></p>
+<p>Retrieve the column as an <code>String</code> value.</p>
+<pre><code class="pony">fun box string(
+  column: I32 val)
+: String iso^
+</code></pre>
+
+<h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>column: <a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<h4 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../builtin-String/">String</a> iso^</li>
+</ul>
+<hr />
+<h3 id="array">array<a class="headerlink" href="#array" title="Permanent link">&para;</a></h3>
+<p><span class="source-link"><a href="../src/sqlite/sqlite/#L822">[Source]</a></span></p>
+<p>Retrieve the column as a BLOB (<code>Array[U8]</code>).</p>
+<pre><code class="pony">fun box array(
+  column: I32 val)
+: Array[U8 val] ref^
+</code></pre>
+
+<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>column: <a href="../builtin-I32/">I32</a> val</li>
+</ul>
+<h4 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="../builtin-Array/">Array</a>[<a href="../builtin-U8/">U8</a> val] ref^</li>
 </ul>
