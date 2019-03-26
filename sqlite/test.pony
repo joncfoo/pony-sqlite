@@ -11,6 +11,7 @@ actor Main is TestList
     t(_TestVersion)
     t(_TestOpenClose)
     t(_TestStatement)
+    t(_StatementBind)
 
 class _TestVersion is UnitTest
   fun name(): String => "version"
@@ -96,4 +97,105 @@ class _TestStatement is UnitTest
       end
 
       h.assert_eq[SqliteResultCode](conn.close(), Sqlite.result_ok(), "expected connection close")
+    end
+
+class _StatementBind is UnitTest
+  fun name(): String => "statement.bind"
+  fun apply(h: TestHelper) =>
+    match Sqlite(":memory:")
+    | let err: SqliteError =>
+      h.fail("failed to open :memory: connection: " + err.code.string() + ", " + err.description)
+
+    | let conn: SqliteConnection =>
+      create_table(h, conn)
+      insert(h, conn)
+      select(h, conn)
+      h.assert_eq[SqliteResultCode](conn.close(), Sqlite.result_ok(), "expected connection close")
+    end
+
+  fun create_table(h: TestHelper, conn: SqliteConnection) =>
+    match conn.sql(
+      """
+      create table khajana (
+        id integer primary key,
+        ints integer not null,
+        int64s integer not null,
+        doubles real not null,
+        strings text not null,
+        blobs blob not null,
+        blobs2 blob not null,
+        nulls text
+      )
+      """
+    )
+    | let err: SqliteError =>
+      h.fail("failed prepare statement: " + err.code.string() + ", " + err.description)
+
+    | let stmt: SqliteStatement =>
+      h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_done())
+      h.assert_eq[SqliteResultCode](stmt.close(), Sqlite.result_ok())
+    end
+
+  fun insert(h: TestHelper, conn: SqliteConnection) =>
+    match conn.sql(
+      """
+      insert into khajana (ints, int64s, doubles, strings, blobs, blobs2, nulls)
+      values (?, ?2, :doubles, @strings, $blobs, $blobs2, ?)
+      """
+    )
+    | let err: SqliteError =>
+      h.fail("statement insert khajana: " + err.code.string() + ", " + err.description)
+
+    | let stmt: SqliteStatement =>
+      let b: Array[U8] = [0xde; 0xad; 0xbe; 0xef]
+      h.assert_eq[SqliteResultCode](stmt.bind(0, I32(42)), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(1, I64(9000)), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(2, F64(3.14)), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(3, "oh the huge manatee!"), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(4, b), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(5, SqliteZeroBlob(I32(4))), Sqlite.result_ok())
+      h.assert_eq[SqliteResultCode](stmt.bind(6, None), Sqlite.result_ok())
+
+      h.assert_eq[I32](stmt.bind_index("?2"), 1)
+      h.assert_eq[I32](stmt.bind_index(":doubles"), 2)
+      h.assert_eq[I32](stmt.bind_index("@strings"), 3)
+      h.assert_eq[I32](stmt.bind_index("$blobs"), 4)
+      h.assert_eq[I32](stmt.bind_index("$blobs2"), 5)
+
+      h.assert_eq[String](stmt.bind_name(1), "?2")
+      h.assert_eq[String](stmt.bind_name(2), ":doubles")
+      h.assert_eq[String](stmt.bind_name(3), "@strings")
+      h.assert_eq[String](stmt.bind_name(4), "$blobs")
+      h.assert_eq[String](stmt.bind_name(5), "$blobs2")
+
+      h.assert_eq[I32](stmt.bind_count(), 7)
+
+      h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_done())
+      h.assert_eq[SqliteResultCode](stmt.close(), Sqlite.result_ok())
+    end
+
+  fun select(h: TestHelper, conn: SqliteConnection) =>
+    match conn.sql(
+      """
+      select ints, int64s, doubles, strings, blobs, blobs2, nulls from khajana limit 1
+      """
+    )
+    | let err: SqliteError =>
+      h.fail("statement select khajana: " + err.code.string() + ", " + err.description)
+
+    | let stmt: SqliteStatement =>
+      let b: Array[U8] = [0xde; 0xad; 0xbe; 0xef]
+      let b2: Array[U8] = [0; 0; 0; 0]
+      h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_row())
+
+      h.assert_eq[I32](stmt.i32(0), 42)
+      h.assert_eq[I64](stmt.i64(1), 9000)
+      h.assert_eq[F64](stmt.f64(2), 3.14)
+      h.assert_eq[String](stmt.string(3), "oh the huge manatee!")
+      h.assert_array_eq[U8](stmt.array(4), b)
+      h.assert_array_eq[U8](stmt.array(5), b2)
+      h.assert_eq[SqliteDataType](stmt.data_type(6), Sqlite.data_null())
+
+      h.assert_eq[SqliteResultCode](stmt.step(), Sqlite.result_done())
+      h.assert_eq[SqliteResultCode](stmt.close(), Sqlite.result_ok())
     end

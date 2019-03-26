@@ -27,6 +27,20 @@ use @sqlite3_step[SqliteResultCode](statement: Pointer[_Statement] tag)
 use @sqlite3_reset[SqliteResultCode](statement: Pointer[_Statement] tag)
 use @sqlite3_finalize[SqliteResultCode](statement: Pointer[_Statement] tag)
 
+use @sqlite3_bind_parameter_count[I32](statement: Pointer[_Statement] tag)
+use @sqlite3_bind_parameter_index[I32](statement: Pointer[_Statement] tag, name: Pointer[U8] tag)
+use @sqlite3_bind_parameter_name[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
+use @sqlite3_bind_null[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32)
+use @sqlite3_bind_double[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: F64)
+use @sqlite3_bind_int[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I32)
+use @sqlite3_bind_int64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I64)
+use @sqlite3_bind_text[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
+// use @sqlite3_bind_text64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: U64, encoding: U8)
+use @sqlite3_bind_blob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
+// use @sqlite3_bind_blob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I64)
+use @sqlite3_bind_zeroblob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I32)
+use @sqlite3_bind_zeroblob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I64)
+
 use @sqlite3_column_count[I32](statement: Pointer[_Statement] tag)
 use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
 use @sqlite3_column_blob[Pointer[U8]](statement: Pointer[_Statement] tag, column: I32)
@@ -668,6 +682,74 @@ class SqliteStatement
     """
     _closed
 
+  fun bind(index: I32, value: (None | F64 | I32 | I64 | String | Array[U8] | SqliteZeroBlob)): SqliteResultCode =>
+    """
+    Binds a value to a parameter in the statement.
+
+    `index` is the index of the parameter (starting at 0).
+
+    Parameters in a SQL statement can take the form of: `?`, `?NNN`, `:VVV`,
+    `@VVV`, and `$VVV`, where `NNN` is an integer and `VVV` is an alphanumeric
+    identifier.
+
+    Note: The maximum length of `String` and `Array[U8]` this method supports
+    is limited to `i32.max_value()`.  Please file an issue if you want to
+    support larger strings and arrays.
+
+    See https://sqlite.org/c3ref/bind_blob.html
+    """
+    match value
+    | None =>
+      @sqlite3_bind_null(_stmt, index+1)
+    | let v: F64 =>
+      @sqlite3_bind_double(_stmt, index+1, v)
+    | let v: I32 =>
+      @sqlite3_bind_int(_stmt, index+1, v)
+    | let v: I64 =>
+      @sqlite3_bind_int64(_stmt, index+1, v)
+    | let v: String =>
+        @sqlite3_bind_text(_stmt, index+1, v.cpointer(), v.size().i32())
+    | let v: Array[U8] =>
+        @sqlite3_bind_blob(_stmt, index+1, v.cpointer(), v.size().i32())
+    | let v: SqliteZeroBlob =>
+      match v.length
+      | let v': I32 =>
+        @sqlite3_bind_zeroblob(_stmt, index+1, v')
+      | let v': I64 =>
+        @sqlite3_bind_zeroblob64(_stmt, index+1, v')
+      end
+    end
+
+  fun bind_count(): I32 =>
+    """
+    Returns the total number of bound parameters in the statement.
+
+    See https://sqlite.org/c3ref/bind_parameter_count.html
+    """
+    @sqlite3_bind_parameter_count(_stmt)
+
+  fun bind_index(name: String): I32 =>
+    """
+    Returns the index of the named parameter.
+
+    Note: indexes start at 0 unlike SQLite which starts at 1.
+
+    See https://sqlite.org/c3ref/bind_parameter_index.html
+    """
+    @sqlite3_bind_parameter_index(_stmt, name.cpointer()) - 1
+
+  fun bind_name(index: I32): String iso^ =>
+    """
+    Returns the name of the parameter at the specified index.
+
+    Note: indexes start at 0 unlike SQLite which starts at 1.
+
+    See https://sqlite.org/c3ref/bind_parameter_name.html
+    """
+    recover
+      String.from_cstring(@sqlite3_bind_parameter_name(_stmt, index + 1))
+    end
+
   fun step(): SqliteResultCode =>
     """
     Call `step()` repeatedly to iterate over the result set.
@@ -766,6 +848,15 @@ class SqliteError
         .>append(description)
         .>append("')")
     end
+
+
+class SqliteZeroBlob
+  """
+  Placeholder used tell SQLite to fill a blob with 0s of `length`.
+  """
+  let length: (I32 | I64)
+  new create(length': (I32 | I64)) =>
+    length = length'
 
 
 primitive _Connection
