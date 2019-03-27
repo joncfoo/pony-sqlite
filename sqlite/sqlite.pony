@@ -34,12 +34,12 @@ use @sqlite3_bind_null[SqliteResultCode](statement: Pointer[_Statement] tag, col
 use @sqlite3_bind_double[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: F64)
 use @sqlite3_bind_int[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I32)
 use @sqlite3_bind_int64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: I64)
-use @sqlite3_bind_text[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
-// use @sqlite3_bind_text64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: U64, encoding: U8)
-use @sqlite3_bind_blob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32)
-// use @sqlite3_bind_blob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I64)
+use @sqlite3_bind_text[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32, destructor: @{(): None})
+use @sqlite3_bind_text64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: U64, destructor: @{(): None}, encoding: U8)
+use @sqlite3_bind_blob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: I32, destructor: @{(): None})
+use @sqlite3_bind_blob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, value: Pointer[U8] tag, length: U64, destructor: @{(): None})
 use @sqlite3_bind_zeroblob[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I32)
-use @sqlite3_bind_zeroblob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: I64)
+use @sqlite3_bind_zeroblob64[SqliteResultCode](statement: Pointer[_Statement] tag, column: I32, length: U64)
 
 use @sqlite3_column_count[I32](statement: Pointer[_Statement] tag)
 use @sqlite3_column_type[SqliteDataType](statement: Pointer[_Statement] tag, column: I32)
@@ -682,7 +682,11 @@ class SqliteStatement
     """
     _closed
 
-  fun bind(index: I32, value: (None | F64 | I32 | I64 | String | Array[U8] | SqliteZeroBlob)): SqliteResultCode =>
+  fun @_noop() =>
+    // used as a function callback
+    None
+
+  fun bind(index: I32, value: (None | F64 | I32 | I64 | String box | Array[U8] box | SqliteZeroBlob)): SqliteResultCode =>
     """
     Binds a value to a parameter in the statement.
 
@@ -692,9 +696,8 @@ class SqliteStatement
     `@VVV`, and `$VVV`, where `NNN` is an integer and `VVV` is an alphanumeric
     identifier.
 
-    Note: The maximum length of `String` and `Array[U8]` this method supports
-    is limited to `i32.max_value()`.  Please file an issue if you want to
-    support larger strings and arrays.
+    Note: The default maximum length of `String` and `Array[U8]` that SQLite
+    supports is 1,000,000,000 bytes.
 
     See https://sqlite.org/c3ref/bind_blob.html
     """
@@ -707,15 +710,28 @@ class SqliteStatement
       @sqlite3_bind_int(_stmt, index+1, v)
     | let v: I64 =>
       @sqlite3_bind_int64(_stmt, index+1, v)
-    | let v: String =>
-        @sqlite3_bind_text(_stmt, index+1, v.cpointer(), v.size().i32())
-    | let v: Array[U8] =>
-        @sqlite3_bind_blob(_stmt, index+1, v.cpointer(), v.size().i32())
+    | let v: String box =>
+      let length = v.size().u64()
+      if length <= I32.max_value().u64() then
+        @sqlite3_bind_text(_stmt, index+1, v.cpointer(), v.size().i32(), addressof this._noop)
+      else
+        // you must have a lot of RAM available :)
+        let utf8: U8 = 1
+        @sqlite3_bind_text64(_stmt, index+1, v.cpointer(), length, addressof this._noop, utf8)
+      end
+    | let v: Array[U8] box =>
+      let length = v.size().u64()
+      if length <= I32.max_value().u64() then
+        @sqlite3_bind_blob(_stmt, index+1, v.cpointer(), v.size().i32(), addressof this._noop)
+      else
+        // you must have a lot of RAM available :)
+        @sqlite3_bind_blob64(_stmt, index+1, v.cpointer(), length, addressof this._noop)
+      end
     | let v: SqliteZeroBlob =>
       match v.length
       | let v': I32 =>
         @sqlite3_bind_zeroblob(_stmt, index+1, v')
-      | let v': I64 =>
+      | let v': U64 =>
         @sqlite3_bind_zeroblob64(_stmt, index+1, v')
       end
     end
@@ -852,10 +868,10 @@ class SqliteError
 
 class SqliteZeroBlob
   """
-  Placeholder used tell SQLite to fill a blob with 0s of `length`.
+  Placeholder used to tell SQLite to fill a blob with 0s of size `length`.
   """
-  let length: (I32 | I64)
-  new create(length': (I32 | I64)) =>
+  let length: (I32 | U64)
+  new create(length': (I32 | U64)) =>
     length = length'
 
 
